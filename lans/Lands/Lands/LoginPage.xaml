@@ -22,11 +22,12 @@
                     Text="Recordarme en este dispositivo" VerticalOptions="Center"></Label>
                 <Switch HorizontalOptions="EndAndExpand"></Switch>
             </StackLayout>
-          
-            
-            
             <ActivityIndicator></ActivityIndicator>
-            <Button Text="Login"  BackgroundColor="Navy" TextColor="WhiteSmoke" BorderRadius="15"></Button>
+            <StackLayout Margin="10,0"></StackLayout>
+            
+            <Button Text="Login"  HeightRequest="46" BackgroundColor="Navy" TextColor="WhiteSmoke" BorderRadius="23"></Button>
+            <Button Text="Registrar" HeightRequest="46" BackgroundColor="Purple" TextColor="White" BorderRadius="23"></Button>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
