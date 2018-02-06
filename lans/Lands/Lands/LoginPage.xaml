@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lands.LoginPage"
+             Title="Iniciar Sesion">
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,5">
+            <Label FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Text="Lands"/>
+            <Image Source ="Onu.png" WidthRequest="200"></Image>
+            <Grid Margin="0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Text="E-mail" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"></Label>
+                <Entry Placeholder="Ingresa tu email..." Keyboard="Email" Grid.Row="0" Grid.Column="1"></Entry>
+                <Label Grid.Row="1" Grid.Column="0" Text="Contraseña" VerticalOptions="Center"></Label>
+                <Entry IsPassword="true" Grid.Row="1" Grid.Column="1" Placeholder="Ingresa tu contraseña"></Entry>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="StartAndExpand"
+                    Text="Recordarme en este dispositivo" VerticalOptions="Center"></Label>
+                <Switch HorizontalOptions="EndAndExpand"></Switch>
+            </StackLayout>
+          
+            
+            
+            <ActivityIndicator></ActivityIndicator>
+            <Button Text="Login"  BackgroundColor="Navy" TextColor="WhiteSmoke" BorderRadius="15"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
