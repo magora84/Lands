@@ -24,15 +24,13 @@
             </StackLayout>
             <ActivityIndicator></ActivityIndicator>
             <StackLayout Margin="10,0"></StackLayout>
-            
             <Button Text="Login"  HeightRequest="46" BackgroundColor="Navy" TextColor="WhiteSmoke" BorderRadius="23"></Button>
             <Button Text="Registrar" HeightRequest="46" BackgroundColor="Purple" TextColor="White" BorderRadius="23"></Button>
-
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Image Source="logo_facebook.png" WidthRequest="100"></Image>
             <Image Source="twitter_logo.png" WidthRequest="100"></Image>
-            <Image Source="instagram_logo.png" WidthRequest="100"></Image>
+            <Image Source="instagram_logos.png" WidthRequest="100"></Image>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
