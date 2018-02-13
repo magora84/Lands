@@ -9,11 +9,8 @@ namespace Lands.ViewModels {
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class LoginViewModel : INotifyPropertyChanged {
-        #region eventos
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-
+    public class LoginViewModel : BaseViewModel {
+      
         #region Atributos
         private string password;
         private bool isRunnig;
@@ -23,10 +20,27 @@ namespace Lands.ViewModels {
 
         #region Propiedades
         public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsRunning { get; set; }
+        public string Password {
+            get {
+                return this.password;
+            }
+            set { SetValue(ref this.password, value); }
+
+        }
+        public bool IsRunning {
+
+            get {
+                return this.isRunnig;
+            }
+            set { SetValue(ref this.isRunnig, value); }
+        }
         public bool IsRemembered { get; set; }
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled {
+            get {
+                return this.isEnabled;
+            }
+            set { SetValue(ref this.isEnabled, value); }
+        }
 
         #endregion
 
@@ -60,7 +74,13 @@ namespace Lands.ViewModels {
                     , "Aceptar");
                 return;
             }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
             if (this.Email != "magora84@hotmail.com " || this.Password != "1234") {
+                this.IsRunning = false;
+                this.IsEnabled = true;
 
                 await Application.Current.MainPage.DisplayAlert(
                     "error",
@@ -70,6 +90,10 @@ namespace Lands.ViewModels {
                 this.Password = string.Empty;
                 return;
             }
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
             await Application.Current.MainPage.DisplayAlert(
                "ok",
                "fuck yEA",
