@@ -8,10 +8,11 @@ namespace Lands.ViewModels {
     using System.ComponentModel;
     using System.Windows.Input;
     using Xamarin.Forms;
-
+    using Views;
     public class LoginViewModel : BaseViewModel {
-      
+
         #region Atributos
+        private string email;
         private string password;
         private bool isRunnig;
         private bool isEnabled;
@@ -19,7 +20,12 @@ namespace Lands.ViewModels {
         #endregion
 
         #region Propiedades
-        public string Email { get; set; }
+        public string Email {
+            get {
+                return this.email;
+            }
+            set { SetValue(ref this.email, value); }
+        }
         public string Password {
             get {
                 return this.password;
@@ -48,6 +54,8 @@ namespace Lands.ViewModels {
         public LoginViewModel() {
             this.IsRemembered = true;
             this.IsEnabled= true;
+            this.Email = "magora84@hotmail.com";
+            this.Password = "1234";
         } 
         #endregion
         #region Commandos
@@ -78,7 +86,7 @@ namespace Lands.ViewModels {
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            if (this.Email != "magora84@hotmail.com " || this.Password != "1234") {
+            if (this.Email != "magora84@hotmail.com" || this.Password != "1234") {
                 this.IsRunning = false;
                 this.IsEnabled = true;
 
@@ -94,11 +102,10 @@ namespace Lands.ViewModels {
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await Application.Current.MainPage.DisplayAlert(
-               "ok",
-               "fuck yEA",
-               "aceptar"
-               );
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+            MainViewModel.GetInstance().Lands = new LansViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
         }
         #endregion
 

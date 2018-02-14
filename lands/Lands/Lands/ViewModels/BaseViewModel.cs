@@ -1,9 +1,4 @@
-﻿using System;
-
-using System.Text;
-
-namespace Lands.ViewModels
-{
+﻿namespace Lands.ViewModels {
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
