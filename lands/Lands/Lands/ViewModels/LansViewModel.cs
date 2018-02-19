@@ -9,22 +9,32 @@ namespace Lands.ViewModels
     using Models;
     using System.Collections.ObjectModel;
     using Xamarin.Forms;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
+
     public class LansViewModel : BaseViewModel {
         #region servicios
         private ApiService apiService;
-
+        
         #endregion
 
         #region Atributos
         private ObservableCollection<Land> lands;
-
+        private bool isRefreshing;
         #endregion
 
         #region propiedades
         public ObservableCollection <Land> Lands {
             get {
                 return this.lands;
-            } set { SetValue(ref this.lands, value); } }
+            } set { SetValue(ref this.lands, value); }
+
+        }
+        public bool IsRefreshing {
+            get { return this.isRefreshing; }
+            set { SetValue(ref this.isRefreshing, value); }
+
+        }
         #endregion
         #region constructor
         public LansViewModel() {
@@ -35,6 +45,7 @@ namespace Lands.ViewModels
 
         #region metodos
         private async void LoadLands() {
+            this.IsRefreshing = false; 
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess) {
@@ -51,7 +62,13 @@ namespace Lands.ViewModels
             }
             var list = (List<Land>)response.Result;
             this.Lands = new ObservableCollection<Land>(list);
-        } 
+            this.IsRefreshing = false;
+        }
+        #endregion
+        #region Commandos
+        public ICommand Command { get {
+                return new RelayCommand(LoadLands);
+            } }
         #endregion
     }
 }

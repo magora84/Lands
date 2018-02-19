@@ -104,6 +104,7 @@
     <None Include="Lands.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ic_chevron_right.png" />
     <Content Include="instagram_logo.png" />
     <Content Include="logo_facebook.png" />
     <Content Include="Onu.png" />
