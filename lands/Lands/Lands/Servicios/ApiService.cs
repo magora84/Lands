@@ -15,11 +15,11 @@ namespace Lands.Servicios
     using Plugin.Connectivity;
 
     public class ApiService {
-       /* public async Task<Response> CheckConnection() {
+        public async Task<Response> CheckConnection() {
             if (!CrossConnectivity.Current.IsConnected) {
                 return new Response {
                     IsSuccess = false,
-                    Message = "Please turn on your internet settings.",
+                    Message = "Por favor active el internet en las configuraciones.",
                 };
             }
 
@@ -28,7 +28,7 @@ namespace Lands.Servicios
             if (!isReachable) {
                 return new Response {
                     IsSuccess = false,
-                    Message = "Check you internet connection.",
+                    Message = "Por favor verifica la conexion a internet.",
                 };
             }
 
@@ -36,7 +36,7 @@ namespace Lands.Servicios
                 IsSuccess = true,
                 Message = "Ok",
             };
-        }*/
+        }
 
         public async Task<TokenResponse> GetToken(
             string urlBase,
