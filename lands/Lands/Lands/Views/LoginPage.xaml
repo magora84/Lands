@@ -30,7 +30,11 @@
                     <Button TextColor="White"  IsEnabled="{Binding IsEnabled, Mode=TwoWay}" BackgroundColor="Purple" Text="Registrar" BorderRadius="23" HeightRequest="46" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
-                <Image Source="logo_facebook.png" WidthRequest="50"></Image>
+                <Image Source="logo_facebook.png" WidthRequest="50">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}">
+                            </TapGestureRecognizer></Image.GestureRecognizers>
+                </Image>
                 <Image Source="twitter_logo.png" WidthRequest="50"></Image>
                 <Image Source="instagram_logo.png" WidthRequest="50"></Image>
             </StackLayout>

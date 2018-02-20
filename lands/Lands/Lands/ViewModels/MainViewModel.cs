@@ -9,6 +9,7 @@ namespace Lands.ViewModels
         #region ViewModels 
         public LoginViewModel Login { get; set; }
         public LansViewModel Lands { get; set; }
+        public LandViewModel Land { get; set; }
         #endregion
 
 
