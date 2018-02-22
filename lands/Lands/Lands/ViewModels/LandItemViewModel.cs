@@ -8,7 +8,7 @@ namespace Lands.ViewModels {
 
     public class LandItemViewModel : Land {
         #region commandos
-        public ICommand Command {
+        public ICommand SelectLandCommand {
             get {
                 return new RelayCommand(SelectLand);
             }

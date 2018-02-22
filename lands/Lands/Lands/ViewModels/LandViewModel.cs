@@ -4,6 +4,7 @@ namespace Lands.ViewModels
 {
     using Models;
     public class LandViewModel {
+
         private LandItemViewModel landItemViewModel;
 
         #region propiedades
