@@ -16,6 +16,11 @@ namespace Lands.ViewModels
 
         #region propiedades
         public Land Land { get; set; }
+
+        public ObservableCollection<Border> Borders {
+            get { return this.borders; }
+            set { this.SetValue(ref this.borders, value); }
+        }
         #endregion
 
         #region Constructor
@@ -27,10 +32,7 @@ namespace Lands.ViewModels
     
         #endregion
 
-        public ObservableCollection<Border> Borders {
-            get { return this.borders; }
-            set { this.SetValue(ref this.borders, value); }
-        }
+       
         private void LoadBorders() {
             this.Borders = new ObservableCollection<Border>();
             foreach (var border in this.Land.Borders) {
