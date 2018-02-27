@@ -4,6 +4,7 @@
              x:Class="Lands.Views.TranslationPage"
                BindingContext="{Binding Main,Source={StaticResource Locator}}"
              Title="Translation"
+             Icon="ic_action_translate.png"
              >
     <ContentPage.Content>
         <StackLayout>

@@ -104,6 +104,11 @@
     <None Include="Lands.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ic_action_info.png" />
+    <Content Include="ic_action_language.png" />
+    <Content Include="ic_action_monetization_on.png" />
+    <Content Include="ic_action_people.png" />
+    <Content Include="ic_action_translate.png" />
     <Content Include="ic_chevron_right.png" />
     <Content Include="instagram_logo.png" />
     <Content Include="logo_facebook.png" />
