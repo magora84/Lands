@@ -20,7 +20,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label FontAttributes="Bold" FontSize="Medium" Grid.Column="0" Text="{Binding Iso6391}"
+                                <Label FontAttributes="Bold" FontSize="Medium" Grid.Column="0" Text="{Binding Iso6392}"
                                      TextColor="Black">
                                 </Label>
                                 <Label Text="{Binding Name}" TextColor="Black" Grid.Column="1"></Label>
