@@ -7,10 +7,31 @@
                 Icon="ic_action_people.png"
              >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="lenguajes"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BindingContext="{Binding Land}" Padding="5">
+            <Label FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Text="{Binding Land.Name}" TextColor="Black"></Label>
+            <ListView HasUnevenRows="True" ItemsSource="{Binding Languages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".5*"/>
+                                    <ColumnDefinition Width="**"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label FontAttributes="Bold" FontSize="Medium" Grid.Column="0" Text="{Binding Iso6391}"
+                                     TextColor="Black">
+                                </Label>
+                                <Label Text="{Binding Name}" TextColor="Black" Grid.Column="1"></Label>
+                                <Label Text="{Binding NativeName}" TextColor="Black" Grid.Column="2"></Label>
+
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
