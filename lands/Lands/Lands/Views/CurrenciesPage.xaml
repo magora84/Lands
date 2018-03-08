@@ -7,9 +7,19 @@
              Title="Currencies"
              >
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding Land}" Padding="5">
-            <Label FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Text="{Binding Land.Name}" TextColor="Black"></Label>
-            <ListView HasUnevenRows="True" ItemsSource="{Binding Currencies}">
+        <StackLayout
+            BindingContext="{Binding Land}"
+            Padding="5">
+            <Label
+                FontSize="Large"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="{Binding Land.Name}"
+                TextColor="Black">
+            </Label>
+            <ListView
+                HasUnevenRows="true"
+                ItemsSource="{Binding Currencies}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -19,14 +29,24 @@
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-
-                                <Label FontAttributes="Bold" FontSize="Medium" Grid.Column="0" Text="{Binding Code}"
-                                     TextColor="Black">
+                                <Label 
+                                    Grid.Column="0"
+                                    Text="{Binding Code}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
                                 </Label>
-                                <Label Text="{Binding Name}" TextColor="Black" Grid.Column="1"></Label>
-                                <Label Text="{Binding Symbol}" TextColor="Black" Grid.Column="2"></Label>
-
-
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center">
+                                </Label>
+                                <Label 
+                                    Grid.Column="2"
+                                    FontSize="40"
+                                    Text="{Binding Symbol}"
+                                    TextColor="Black">
+                                </Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
