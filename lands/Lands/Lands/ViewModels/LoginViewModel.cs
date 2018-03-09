@@ -9,7 +9,13 @@ namespace Lands.ViewModels {
     using System.Windows.Input;
     using Xamarin.Forms;
     using Views;
+    using Lands.Servicios;
+
     public class LoginViewModel : BaseViewModel {
+
+        #region servicios
+        private ApiService apiService;
+        #endregion
 
         #region Atributos
         private string email;
@@ -52,11 +58,12 @@ namespace Lands.ViewModels {
 
         #region constructor
         public LoginViewModel() {
+            this.apiService = new ApiService();
             this.IsRemembered = true;
-            this.IsEnabled= true;
-            this.Email = "magora84@hotmail.com";
-            this.Password = "1234";
-        } 
+            this.IsEnabled = true;
+         //   this.Email = "magora84@hotmail.com";
+           // this.Password = "1234";
+        }
         #endregion
         #region Commandos
         public ICommand LoginCommand {
@@ -85,19 +92,54 @@ namespace Lands.ViewModels {
 
             this.IsRunning = true;
             this.IsEnabled = false;
-
-            if (this.Email != "magora84@hotmail.com" || this.Password != "1234") {
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess) {
                 this.IsRunning = false;
                 this.IsEnabled = true;
-
                 await Application.Current.MainPage.DisplayAlert(
                     "error",
-                    "email o password incorrecto",
+                    connection.Message,
                     "aceptar"
                     );
                 this.Password = string.Empty;
                 return;
             }
+            var token = await this.apiService.GetToken("http://landsapil.azurewebsites.net", this.Email, this.Password);
+            if (token == null) {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "error",
+                    "algo salio mal please try later",
+                    "aceptar"
+                    );
+                this.Password = string.Empty;
+                return;
+            }
+            if (string.IsNullOrEmpty(token.AccessToken)) {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "error",
+                    token.ErrorDescription,
+                    "aceptar"
+                    );
+                this.Password = string.Empty;
+                return;
+            }
+            /*
+                        if (this.Email != "magora84@hotmail.com" || this.Password != "1234") {
+                            this.IsRunning = false;
+                            this.IsEnabled = true;
+
+                            await Application.Current.MainPage.DisplayAlert(
+                                "error",
+                                "email o password incorrecto",
+                                "aceptar"
+                                );
+                            this.Password = string.Empty;
+                            return;
+                        }*/
 
             this.IsRunning = false;
             this.IsEnabled = true;
