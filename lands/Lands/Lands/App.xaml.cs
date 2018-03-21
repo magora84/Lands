@@ -11,12 +11,16 @@ namespace Lands
 
     public partial class App : Application
 	{
+        #region properties
+        public static NavigationPage Navigator { get; internal set; }
+        
+        #endregion
         #region Constructors
         public App ()
 		{
 			InitializeComponent();
 
-			MainPage =new NavigationPage(new LoginPage()) ;
+			MainPage =new NavigationPage(new LoginPage()) /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
 		}
         #endregion
 

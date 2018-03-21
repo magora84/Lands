@@ -10,7 +10,7 @@ namespace Lands.ViewModels {
     using Xamarin.Forms;
     using Views;
     using Lands.Servicios;
-
+    using Helpers;
     public class LoginViewModel : BaseViewModel {
 
         #region servicios
@@ -77,9 +77,9 @@ namespace Lands.ViewModels {
         private async void login() {
             if (string.IsNullOrEmpty(this.Email)) {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error"
-                    , "Debes introducir tu email"
-                    , "Aceptar");
+                    Languages.Error
+                    , Languages.EmailValidation
+                    , Languages.Accept);
                 return;
             }
             if (string.IsNullOrEmpty(this.Password)) {

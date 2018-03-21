@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Lands.Helpers"
              x:Class="Lands.Views.LoginPage" 
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Login">
@@ -15,13 +16,14 @@
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label Text="Email" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"></Label>
-                <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Introduce tu Email" Keyboard="Email" Grid.Row="0" Grid.Column="1"></Entry>
+                <Entry Text="{Binding Email, Mode=TwoWay}" 
+                      Placeholder="{i18n:Translate EmailPlaceHolder}" Keyboard="Email" Grid.Row="0" Grid.Column="1"></Entry>
                 <Label Text="Password"  Grid.Row="1" Grid.Column="0" VerticalOptions="Center"></Label>
                 <Entry Text="{Binding Password,Mode=TwoWay}" IsPassword="True" Placeholder="Introduce tu Password"  Grid.Row="1" Grid.Column="1"></Entry>
             </Grid>
                 <ActivityIndicator VerticalOptions="CenterAndExpand" IsRunning="{Binding IsRuning,Mode=TwoWay}"></ActivityIndicator>
                 <StackLayout Orientation="Horizontal" Margin="10,0" VerticalOptions="CenterAndExpand">
-                <Label Text="Recordarme en este dispositivo" VerticalOptions="Center" HorizontalOptions="StartAndExpand"></Label>
+                    <Label Text="{i18n:Translate Rememberme}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"></Label>
                     <Switch HorizontalOptions="End" IsToggled="{Binding IsRemembered, Mode=TwoWay}"></Switch>
             </StackLayout>
                 <Label Text="Olvidaste la contraseña" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Blue"></Label>
