@@ -20,8 +20,9 @@ namespace Lands
 		{
 			InitializeComponent();
 
-			MainPage =new NavigationPage(new LoginPage()) /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
-		}
+			MainPage =new MasterPage() /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
+          //  MainPage = new NavigationPage(new LoginPage()) /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
+        }
         #endregion
 
         #region Methods

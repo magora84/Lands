@@ -2,14 +2,16 @@
 namespace Lands.ViewModels
 {
     using Models;
+    using System;
     using System.Collections.Generic;
-
+    using System.Collections.ObjectModel;
 
     public class MainViewModel
     {
         #region Propiedades 
         public  List<Land> LandsList { get; set; }
         public TokenResponse Token { get; set; }
+        public ObservableCollection<MenuItemViewModel> Menus { get; set; }
         #endregion
 
         #region ViewModels 
@@ -24,7 +26,10 @@ namespace Lands.ViewModels
         public MainViewModel() {
             instance = this;
             this.Login = new LoginViewModel();
+            this.LoadMenu();
         }
+
+        
         #endregion
 
         #region Singleton
@@ -37,4 +42,13 @@ namespace Lands.ViewModels
         }
         #endregion
     }
+    #region metodos
+    private void LoadMenu() {
+        this.Menus = new ObservableCollection<MenuItemViewModel>();
+        this.Menus.Add(new MenuItemViewModel {
+        Icon="",
+        PageName="",
+        Title=""});
+    }
+    #endregion
 }

@@ -97,11 +97,20 @@ namespace Lands.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Menu.
+        ///   Busca una cadena traducida similar a Logout.
         /// </summary>
-        public static string Menu {
+        public static string LogOut {
             get {
-                return ResourceManager.GetString("Menu", resourceCulture);
+                return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a My Profile.
+        /// </summary>
+        public static string MyProfile {
+            get {
+                return ResourceManager.GetString("MyProfile", resourceCulture);
             }
         }
         
@@ -111,6 +120,15 @@ namespace Lands.Resources {
         public static string Rememberme {
             get {
                 return ResourceManager.GetString("Rememberme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Stactics.
+        /// </summary>
+        public static string Stactics {
+            get {
+                return ResourceManager.GetString("Stactics", resourceCulture);
             }
         }
     }

@@ -110,6 +110,9 @@
     <Content Include="ic_action_people.png" />
     <Content Include="ic_action_translate.png" />
     <Content Include="ic_chevron_right.png" />
+    <Content Include="ic_exit_to_app.png" />
+    <Content Include="ic_insert_chart.png" />
+    <Content Include="ic_settings.png" />
     <Content Include="instagram_logo.png" />
     <Content Include="logo_facebook.png" />
     <Content Include="Onu.png" />
