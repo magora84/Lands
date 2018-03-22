@@ -1,6 +1,7 @@
 ﻿
 namespace Lands.ViewModels
 {
+    using Lands.Helpers;
     using Models;
     using System;
     using System.Collections.Generic;
@@ -10,7 +11,9 @@ namespace Lands.ViewModels
     {
         #region Propiedades 
         public  List<Land> LandsList { get; set; }
-        public TokenResponse Token { get; set; }
+        // public TokenResponse Token { get; set; }
+        public string Token { get; set; }
+        public string TokenType { get; set; }
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
         #endregion
 
@@ -41,14 +44,30 @@ namespace Lands.ViewModels
             return instance;
         }
         #endregion
+
+        #region metodos
+        private void LoadMenu() {
+            this.Menus = new ObservableCollection<MenuItemViewModel>();
+
+            this.Menus.Add(new MenuItemViewModel {
+                Icon = "ic_settings",
+                PageName = "MyProfilePage",
+                Title = Languages.MyProfile,
+            });
+
+            this.Menus.Add(new MenuItemViewModel {
+                Icon = "ic_insert_chart",
+                PageName = "StaticPage",
+                Title = Languages.Statics,
+            });
+            this.Menus.Add(new MenuItemViewModel {
+                Icon = "ic_exit_to_app",
+                PageName = "LoginPage",
+                Title = Languages.LogOut,
+            });
+
+        }
+        #endregion
     }
-    #region metodos
-    private void LoadMenu() {
-        this.Menus = new ObservableCollection<MenuItemViewModel>();
-        this.Menus.Add(new MenuItemViewModel {
-        Icon="",
-        PageName="",
-        Title=""});
-    }
-    #endregion
+
 }

@@ -132,13 +132,16 @@
   <data name="LogOut" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
   <data name="MyProfile" xml:space="preserve">
     <value>My Profile</value>
   </data>
   <data name="Rememberme" xml:space="preserve">
     <value>Rememberme on this device</value>
   </data>
-  <data name="Stactics" xml:space="preserve">
-    <value>Stactics</value>
+  <data name="Statics" xml:space="preserve">
+    <value>Statics</value>
   </data>
 </root>

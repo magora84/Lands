@@ -112,6 +112,7 @@
     <Content Include="ic_chevron_right.png" />
     <Content Include="ic_exit_to_app.png" />
     <Content Include="ic_insert_chart.png" />
+    <Content Include="ic_menu.png" />
     <Content Include="ic_settings.png" />
     <Content Include="instagram_logo.png" />
     <Content Include="logo_facebook.png" />
@@ -161,6 +162,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading">
       <Version>2.3.4</Version>
     </PackageReference>

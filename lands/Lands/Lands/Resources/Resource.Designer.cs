@@ -106,6 +106,15 @@ namespace Lands.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Menu.
+        /// </summary>
+        public static string Menu {
+            get {
+                return ResourceManager.GetString("Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a My Profile.
         /// </summary>
         public static string MyProfile {
@@ -124,11 +133,11 @@ namespace Lands.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Stactics.
+        ///   Busca una cadena traducida similar a Statics.
         /// </summary>
-        public static string Stactics {
+        public static string Statics {
             get {
-                return ResourceManager.GetString("Stactics", resourceCulture);
+                return ResourceManager.GetString("Statics", resourceCulture);
             }
         }
     }

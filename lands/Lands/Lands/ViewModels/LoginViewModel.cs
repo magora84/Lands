@@ -61,8 +61,8 @@ namespace Lands.ViewModels {
             this.apiService = new ApiService();
             this.IsRemembered = true;
             this.IsEnabled = true;
-         this.Email = "magora84@hotmail.com";
-          this.Password = "123456";
+        // this.Email = "magora84@hotmail.com";
+        //  this.Password = "123456";
         }
         #endregion
         #region Commandos
@@ -142,9 +142,16 @@ namespace Lands.ViewModels {
                         }*/
 
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
+            mainViewModel.Token = token.AccessToken;
+            mainViewModel.TokenType = token.TokenType;
+            if (this.IsRemembered) {
+                Settings.Token = token.AccessToken;
+                Settings.TokenType = token.TokenType;
+            }
+    
             mainViewModel.Lands = new LansViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
+            Application.Current.MainPage = new MasterPage();
+            // await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
             this.IsRunning = false;
             this.IsEnabled = true;
 

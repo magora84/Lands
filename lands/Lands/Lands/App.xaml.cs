@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace Lands
 {
+    using Lands.Helpers;
     using Views;
+    using ViewModels;
     using Xamarin.Forms; 
 
     public partial class App : Application
@@ -19,9 +22,21 @@ namespace Lands
         public App ()
 		{
 			InitializeComponent();
+            if (string.IsNullOrEmpty(Settings.Token)) {
+                MainPage = new NavigationPage(new LoginPage()) /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
 
-			MainPage =new MasterPage() /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
-          //  MainPage = new NavigationPage(new LoginPage()) /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
+            }
+            else {
+                var mainViewModel = MainViewModel.GetInstance();
+
+             
+                mainViewModel.Token = Settings.Token;
+                mainViewModel.Token = Settings.TokenType;
+
+                mainViewModel.Lands = new LansViewModel();
+                MainPage = new MasterPage() /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
+
+            }
         }
         #endregion
 

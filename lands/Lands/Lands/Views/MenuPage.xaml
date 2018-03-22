@@ -5,14 +5,33 @@
     xmlns:i18n="clr-namespace:Lands.Helpers"
     x:Class="Lands.Views.MenuPage"
       BindingContext="{Binding Main,Source={StaticResource Locator}}"
-              Icon="ic_action_monetization_on.png"
-    BackgroundColor="Navy"
+              Icon="ic_menu.png"
+    BackgroundColor="Black"
              Title="{i18n:Translate Menu}}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Menu" TextColor="White"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="5,20,5,5">
+            <Image Source="Onu.png" WidthRequest="100"></Image>
+            <ListView BackgroundColor="Black" ItemsSource="{Binding Menus}"
+                      HasUnevenRows="True" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigateCommand}"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Icon}" WidthRequest="50" HeightRequest="50"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" TextColor="White"
+                                       Text="{Binding Title}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
