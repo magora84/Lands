@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout Padding="5,20,5,5">
             <Image Source="Onu.png" WidthRequest="100"></Image>
-            <ListView BackgroundColor="Black" ItemsSource="{Binding Menus}"
+            <ListView BackgroundColor="#212121" ItemsSource="{Binding Menus}"
                       HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
