@@ -159,6 +159,14 @@ namespace Lands.ViewModels {
             this.Password = string.Empty;
          
         }
+        public ICommand RegisterCommand {
+
+            get { return new RelayCommand(Register); }
+        }
+
+        private void Register() {
+            throw new NotImplementedException();
+        }
         #endregion
 
     }

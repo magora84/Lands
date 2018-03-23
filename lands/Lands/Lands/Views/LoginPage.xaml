@@ -29,7 +29,7 @@
                 <Label Text="Olvidaste la contraseña" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Blue"></Label>
             <StackLayout Margin="40,0" Orientation="Horizontal">
                 <Button Command="{Binding LoginCommand}" IsEnabled="{Binding IsEnabled, Mode=TwoWay}"  TextColor="White" BackgroundColor="Navy" Text="Login" BorderRadius="23" HeightRequest="46" HorizontalOptions="FillAndExpand"></Button>
-                    <Button TextColor="White"  IsEnabled="{Binding IsEnabled, Mode=TwoWay}" BackgroundColor="Purple" Text="Registrar" BorderRadius="23" HeightRequest="46" HorizontalOptions="FillAndExpand"></Button>
+                    <Button Command="{Binding RegisterCommand}" TextColor="White"  IsEnabled="{Binding IsEnabled, Mode=TwoWay}" BackgroundColor="Purple" Text="Registrar" BorderRadius="23" HeightRequest="46" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
                 <Image Source="logo_facebook.png" WidthRequest="50">
