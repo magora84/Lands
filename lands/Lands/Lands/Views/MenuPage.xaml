@@ -6,7 +6,7 @@
     x:Class="Lands.Views.MenuPage"
       BindingContext="{Binding Main,Source={StaticResource Locator}}"
               Icon="ic_menu.png"
-    BackgroundColor="Black"
+    BackgroundColor="#212121"
              Title="{i18n:Translate Menu}}">
     <ContentPage.Content>
         <StackLayout Padding="5,20,5,5">
