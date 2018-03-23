@@ -199,4 +199,7 @@
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\no_imagen.jpg" />
+  </ItemGroup>
 </Project>

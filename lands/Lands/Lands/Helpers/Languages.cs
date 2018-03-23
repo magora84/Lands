@@ -102,7 +102,10 @@ namespace Lands.Helpers
         public static string EmailValidation2 {
             get { return Resource.EmailValidation2; }
         }
-
+        
+            public static string PasswordValidation {
+            get { return Resource.PasswordValidation; }
+        }
         public static string PasswordValidation2 {
             get { return Resource.PasswordValidation2; }
         }

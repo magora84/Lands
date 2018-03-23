@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-
-namespace Lands.ViewModels {
+﻿namespace Lands.ViewModels {
     using GalaSoft.MvvmLight.Command;
     using System.ComponentModel;
     using System.Windows.Input;
@@ -104,7 +99,8 @@ namespace Lands.ViewModels {
                 this.Password = string.Empty;
                 return;
             }
-            var token = await this.apiService.GetToken("http://landsapi1.azurewebsites.net", this.Email, this.Password);
+            var apiSecurity = Application.Current.Resources["APISecutity"].ToString();
+            var token = await this.apiService.GetToken(apiSecurity, this.Email, this.Password);
             if (token == null) {
                 this.IsRunning = false;
                 this.IsEnabled = true;
@@ -127,20 +123,7 @@ namespace Lands.ViewModels {
                 this.Password = string.Empty;
                 return;
             }
-            /*
-                        if (this.Email != "magora84@hotmail.com" || this.Password != "1234") {
-                            this.IsRunning = false;
-                            this.IsEnabled = true;
-
-                            await Application.Current.MainPage.DisplayAlert(
-                                "error",
-                                "email o password incorrecto",
-                                "aceptar"
-                                );
-                            this.Password = string.Empty;
-                            return;
-                        }*/
-
+     
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token.AccessToken;
             mainViewModel.TokenType = token.TokenType;
@@ -164,8 +147,9 @@ namespace Lands.ViewModels {
             get { return new RelayCommand(Register); }
         }
 
-        private void Register() {
-            throw new NotImplementedException();
+        private async void Register() {
+            MainViewModel.GetInstance().Register = new RegisterViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
         #endregion
 

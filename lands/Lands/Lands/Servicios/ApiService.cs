@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Lands.Servicios
+﻿namespace Lands.Servicios
 {
     using System;
     using System.Collections.Generic;
