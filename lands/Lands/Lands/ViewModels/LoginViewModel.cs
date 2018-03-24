@@ -99,7 +99,7 @@
                 this.Password = string.Empty;
                 return;
             }
-            var apiSecurity = Application.Current.Resources["APISecutity"].ToString();
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
             var token = await this.apiService.GetToken(apiSecurity, this.Email, this.Password);
             if (token == null) {
                 this.IsRunning = false;

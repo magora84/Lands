@@ -304,7 +304,7 @@
     <value>Debes ingresar un email válido.</value>
   </data>
   <data name="PasswordValidation2" xml:space="preserve">
-    <value>La contraseña debe tener al menos sies (6) carácteres.</value>
+    <value>La contraseña debe tener al menos seis (6) carácteres.</value>
   </data>
   <data name="ConfirmValidation2" xml:space="preserve">
     <value>La contraseña y la confirmación no concuerdan.</value>
