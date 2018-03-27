@@ -123,7 +123,9 @@
                 this.Password = string.Empty;
                 return;
             }
-     
+            var user = await this.apiService.GetUserByEmail(apiSecurity, "/api/", "/Users/GetUserByEmail", 
+                this.Email);
+
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token.AccessToken;
             mainViewModel.TokenType = token.TokenType;
