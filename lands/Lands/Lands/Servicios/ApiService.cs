@@ -291,21 +291,26 @@
                 };
             }
         }
-        public async Task<User> GetUserByEmail<T>(
-        string urlBase,
-        string servicePrefix,
-        string controller,
-        string email) {
+        public async Task<User> GetUserByEmail(
+             string urlBase,
+             string servicePrefix,
+             string controller,
+             string tokenType,
+             string accessToken,
+             string email) {
             try {
                 var model = new UserRequest {
-                    Email=email,
+                    Email = email,
                 };
+
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(
                     request,
                     Encoding.UTF8,
                     "application/json");
                 var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue(tokenType, accessToken);
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.PostAsync(url, content);
@@ -315,9 +320,7 @@
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-               return JsonConvert.DeserializeObject<User>(result);
-
-              
+                return JsonConvert.DeserializeObject<User>(result);
             }
             catch {
                 return null;

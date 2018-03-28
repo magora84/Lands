@@ -56,8 +56,8 @@
             this.apiService = new ApiService();
             this.IsRemembered = true;
             this.IsEnabled = true;
-        // this.Email = "magora84@hotmail.com";
-        //  this.Password = "123456";
+        this.Email = "magora84@hotmail.com";
+         this.Password = "123456";
         }
         #endregion
         #region Commandos
@@ -123,12 +123,18 @@
                 this.Password = string.Empty;
                 return;
             }
-            var user = await this.apiService.GetUserByEmail(apiSecurity, "/api/", "/Users/GetUserByEmail", 
-                this.Email);
+            var user = await this.apiService.GetUserByEmail(
+             apiSecurity,
+             "/api",
+             "/Users/GetUserByEmail",
+             token.TokenType,
+             token.AccessToken,
+             this.Email);
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token.AccessToken;
             mainViewModel.TokenType = token.TokenType;
+            mainViewModel.User = user;
             if (this.IsRemembered) {
                 Settings.Token = token.AccessToken;
                 Settings.TokenType = token.TokenType;
