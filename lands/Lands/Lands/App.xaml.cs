@@ -1,16 +1,13 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 
 namespace Lands
 {
     using Lands.Helpers;
     using Views;
     using ViewModels;
-    using Xamarin.Forms; 
+    using Xamarin.Forms;
+    using Services;
+    using Lands.Models;
 
     public partial class App : Application
 	{
@@ -27,12 +24,14 @@ namespace Lands
 
             }
             else {
+                var dataSevice = new DataService();
+                var user = dataSevice.First<UserLocal>(false);
                 var mainViewModel = MainViewModel.GetInstance();
 
              
                 mainViewModel.Token = Settings.Token;
                 mainViewModel.Token = Settings.TokenType;
-
+                mainViewModel.User = user;
                 mainViewModel.Lands = new LansViewModel();
                 MainPage = new MasterPage() /*{ BarBackgroundColor = Color.FromHex("#c31441") }*/;
 

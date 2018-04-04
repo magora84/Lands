@@ -6,10 +6,13 @@
     using Views;
     using Lands.Servicios;
     using Helpers;
+    using Lands.Services;
+
     public class LoginViewModel : BaseViewModel {
 
         #region servicios
         private ApiService apiService;
+        private DataService dataService;
         #endregion
 
         #region Atributos
@@ -54,6 +57,7 @@
         #region constructor
         public LoginViewModel() {
             this.apiService = new ApiService();
+            this.dataService = new DataService();
             this.IsRemembered = true;
             this.IsEnabled = true;
         this.Email = "magora84@hotmail.com";
@@ -131,13 +135,16 @@
              token.AccessToken,
              this.Email);
 
+            var userLocal = Converter.ToUserLocal(user);
+
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token.AccessToken;
             mainViewModel.TokenType = token.TokenType;
-            mainViewModel.User = user;
+            mainViewModel.User = userLocal;
             if (this.IsRemembered) {
                 Settings.Token = token.AccessToken;
                 Settings.TokenType = token.TokenType;
+                this.dataService.DeleteAllAndInsert(userLocal);
             }
     
             mainViewModel.Lands = new LansViewModel();

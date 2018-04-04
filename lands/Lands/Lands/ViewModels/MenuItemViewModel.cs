@@ -30,6 +30,9 @@ namespace Lands.ViewModels
 
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
 
+            }else if(this.PageName== "MyProfilePage") {
+               // MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                App.Navigator.PushAsync(new MyProfilePage());
             }
         }
 

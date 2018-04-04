@@ -1,11 +1,11 @@
-﻿namespace Interfaces
+﻿namespace Lands.Interfaces
 {
     using System.Globalization;
 
-    public interface ILocalize {
+    public interface ILocalize
+    {
         CultureInfo GetCurrentCultureInfo();
+
         void SetLocale(CultureInfo ci);
     }
-
-
 }
