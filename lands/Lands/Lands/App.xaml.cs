@@ -13,7 +13,10 @@ namespace Lands
 	{
         #region properties
         public static NavigationPage Navigator { get; internal set; }
-        
+        public static MasterPage Master { get;
+            internal set;
+        }
+
         #endregion
         #region Constructors
         public App ()

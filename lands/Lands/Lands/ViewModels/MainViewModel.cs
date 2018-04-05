@@ -23,7 +23,7 @@ namespace Lands.ViewModels
         public RegisterViewModel Register { get; set; }
         public LansViewModel Lands { get; set; }
         public LandViewModel Land { get; set; }
-       // public MyProfileViewModel MyProfile { get; set; }
+       public MyProfileViewModel MyProfile { get; set; }
         #endregion
 
 
