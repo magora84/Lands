@@ -99,5 +99,101 @@ namespace Lands.ViewModels
             }
         }
         #endregion
+        #region comadoguardar
+        public ICommand SaveCommand {
+            get {
+                return new RelayCommand(Save);
+            }
+        }
+
+        private async void Save() {
+            if (string.IsNullOrEmpty(this.User.FirstName)) {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.FirstNameValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.User.LastName)) {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.LastNameValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.User.Email)) {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.EmailValidation,
+                    Languages.Accept);
+                return;
+            }
+
+            if (!RegexUtilities.IsValidEmail(this.User.Email)) {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.EmailValidation2,
+                    Languages.Accept);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.User.Telephone)) {
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.PhoneValidation,
+                    Languages.Accept);
+                return;
+            }
+
+          
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            var checkConnetion = await this.apiService.CheckConnection();
+            if (!checkConnetion.IsSuccess) {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    checkConnetion.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            byte[] imageArray = null;
+            if (this.file != null) {
+                imageArray = FilesHelper.ReadFully(this.file.GetStream());
+            }
+
+            var userDomain = Converter.ToUserDomain(this.User, imageArray);
+
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.Put(
+                apiSecurity,
+                "/api",
+                "/Users",
+                MainViewModel.GetInstance().TokenType,
+                MainViewModel.GetInstance().Token,
+                userDomain);
+
+            if (!response.IsSuccess) {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    response.Message,
+                    Languages.Accept);
+                return;
+            }
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            await App.Navigator.PopAsync();
+        }
+        #endregion
     }
 }
