@@ -6,7 +6,7 @@ namespace Lands
     using Views;
     using ViewModels;
     using Xamarin.Forms;
-    using Services;
+    using Servicios;
     using Lands.Models;
 
     public partial class App : Application

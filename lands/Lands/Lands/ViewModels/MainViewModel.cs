@@ -7,15 +7,22 @@ namespace Lands.ViewModels
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
-    public class MainViewModel
+    public class MainViewModel: BaseViewModel
     {
+        #region Atributos
+        private UserLocal user;
+        #endregion
+
         #region Propiedades 
-        public  List<Land> LandsList { get; set; }
+        public List<Land> LandsList { get; set; }
         // public TokenResponse Token { get; set; }
         public string Token { get; set; }
         public string TokenType { get; set; }
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
-        public UserLocal User { get; set; }
+        public UserLocal User {
+            get { return this.user;  } set { SetValue(ref this.user, value); } }
+        public ChangePasswordViewModel ChangePassword { get; set; }
+
         #endregion
 
         #region ViewModels 

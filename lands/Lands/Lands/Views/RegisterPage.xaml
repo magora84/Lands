@@ -14,7 +14,7 @@
                 Padding="5">
                 <controls:CircleImage 
                     Aspect="AspectFill"
-                    HeightRequest="150"
+                    HeightRequest="250"
                     Source="{Binding ImageSource}">
                     <controls:CircleImage.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />

@@ -28,7 +28,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame BackgroundColor="White"
-                                Margin="10"
+                                Margin="3"
                                 CornerRadius="3"
                                 HasShadow="true">
                                 <Frame.GestureRecognizers>

@@ -1,4 +1,4 @@
-﻿namespace Lands.Services {
+﻿namespace Lands.Servicios {
     using System;
     using System.Collections.Generic;
     using System.Linq;

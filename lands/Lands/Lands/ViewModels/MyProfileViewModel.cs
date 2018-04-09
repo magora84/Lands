@@ -2,6 +2,7 @@
 using Lands.Helpers;
 using Lands.Models;
 using Lands.Servicios;
+using Lands.Views;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -16,6 +17,8 @@ namespace Lands.ViewModels
     {
         #region services
         private ApiService apiService;
+        private DataService dataService;
+
         #endregion
         #region Atributtos
         private bool isRunning;
@@ -43,6 +46,7 @@ namespace Lands.ViewModels
         #region Constructor
         public MyProfileViewModel() {
             this.apiService = new ApiService();
+            this.dataService = new DataService();
             this.User = MainViewModel.GetInstance().User;
             this.ImageSource = this.User.ImageFullPath;
             this.IsEnabled = true;
@@ -51,6 +55,17 @@ namespace Lands.ViewModels
         #endregion
 
         #region Comandos
+        public ICommand ChangePasswordCommand {
+            get {
+                return new RelayCommand(ChangePassword);
+            }
+        }
+
+        private async void ChangePassword() {
+            MainViewModel.GetInstance().ChangePassword = new ChangePasswordViewModel();
+            await App.Navigator.PushAsync(new ChangePasswordPage());
+        }
+
         public ICommand ChangeImageCommand {
             get {
                 return new RelayCommand(ChangeImage);
@@ -188,10 +203,20 @@ namespace Lands.ViewModels
                     Languages.Accept);
                 return;
             }
-
+            var userApi = await this.apiService.GetUserByEmail(
+                apiSecurity,
+                "/api",
+                "/Users/GetUserByEmail",
+                MainViewModel.GetInstance().TokenType,
+                MainViewModel.GetInstance().Token,
+                this.User.Email
+                );
+            var userLocal = Converter.ToUserLocal(userApi);
+            MainViewModel.GetInstance().User = userLocal;
+            this.dataService.Update(userLocal);
             this.IsRunning = false;
             this.IsEnabled = true;
-
+           
             await App.Navigator.PopAsync();
         }
         #endregion
